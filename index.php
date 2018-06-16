@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+<?php require "config.php"; ?>
 
   <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Zombieland RP by fivelife">
+    <meta name="author" content="Glen McMahon">
 
     <title>Zombieland by FiveLife</title>
 
@@ -49,10 +50,25 @@
                 Nous sommes en 2019, vous êtes un survivant de cette attaque et devrez lutter pour votre vie, voir pour votre survie.
                 <br><br>Rejoignez notre newsletter !</p>
               <div class="input-group input-group-newsletter">
-                <input type="email" class="form-control" placeholder="Entrez un email..." aria-label="Entrez un email..." aria-describedby="basic-addon">
+                  <form action="post.php" method="post" class="input-group input-group-newsletter">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Entrez un email..." aria-label="Entrez un email..." aria-describedby="basic-addon">
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button">Notifiez moi!</button>
+                  <button class="btn btn-secondary" type="submit">Notifiez moi!</button>
                 </div>
+                  </form>
+                  <?php
+                  if(isset($_GET['notify'])){
+                      if($_GET['notify']==1){
+                          echo'<span style="color: green">Votre email a bien été ajouté</span>';
+                          unset($_GET['notify']);
+                      }else{
+                          if ($_GET['notify']==0){
+                              echo'<span style="color: red">Oops, une erreur c\'est produite</span>';
+                          }
+                          unset($_GET['notify']);
+                      }
+                  }
+                  ?>
               </div>
             </div>
           </div>
