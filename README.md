@@ -1,2 +1,0 @@
-# PreviewZombieland
-Preview zombieland
